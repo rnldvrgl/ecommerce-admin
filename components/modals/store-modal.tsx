@@ -32,9 +32,7 @@ export const StoreModal = () => {
         try {
             setLoading(true);
             const response = await axios.post('/api/stores', values);
-
             console.log(response.data)
-
         } catch (error) {
             console.log(error)
         } finally {
