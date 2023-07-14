@@ -49,14 +49,24 @@ export const StoreModal = () => {
                                     <FormItem>
                                         <FormLabel>Name</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="E-Commerce" {...field} />
+                                            <Input
+                                                placeholder="E-Commerce"
+                                                disabled={loading}
+                                                {...field}
+                                            />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
                                 )}
-                            ></FormField>
+                            />
                             <div className="pt-6 space-x-2 flex items-center justify-end w-full">
-                                <Button variant="outline" onClick={storeModal.onClose}>Cancel</Button>
+                                <Button
+                                    variant="outline"
+                                    onClick={storeModal.onClose}
+                                    disabled={loading}
+                                >
+                                    Cancel
+                                </Button>
                                 <Button type="submit">Continue</Button>
                             </div>
                         </form>
