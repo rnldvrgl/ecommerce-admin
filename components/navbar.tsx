@@ -9,7 +9,7 @@ const Navbar = () => {
                     store switcher
                 </div>
                 <div>
-                    <MainNav />
+                    <MainNav className="mx-6" />
                 </div>
                 <div className="ml-auto flex items-center space-x-4">
                     <UserButton afterSignOutUrl="/" />
