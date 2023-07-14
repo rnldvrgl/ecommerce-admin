@@ -5,6 +5,7 @@ import { Store } from "@prisma/client"
 import { Heading } from "@/components/ui/heading";
 import { Button } from "@/components/ui/button";
 import { Trash } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
 
 interface SettingsFormProps {
     initialData: Store;
@@ -28,7 +29,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
                     <Trash className="h-4 w-4" />
                 </Button>
             </div>
-
+            <Separator />
         </>
     )
 }
