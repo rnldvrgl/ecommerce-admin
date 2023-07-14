@@ -4,6 +4,7 @@ import { useStoreModal } from "@/hooks/use-store-modal"
 import { Modal } from "@/components/ui/modal"
 
 import * as z from "zod"
+import axios from "axios"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
@@ -28,7 +29,17 @@ export const StoreModal = () => {
     })
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
-        console.log(values)
+        try {
+            setLoading(true);
+            const response = await axios.post('/api/stores', values);
+
+            console.log(response.data)
+
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setLoading(false);
+        }
     }
 
     return (
