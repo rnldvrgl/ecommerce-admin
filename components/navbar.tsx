@@ -1,4 +1,5 @@
 import { UserButton } from "@clerk/nextjs";
+import { MainNav } from "./main-nav";
 
 const Navbar = () => {
     return (
@@ -8,7 +9,7 @@ const Navbar = () => {
                     store switcher
                 </div>
                 <div>
-                    routes
+                    <MainNav />
                 </div>
                 <div className="ml-auto flex items-center space-x-4">
                     <UserButton afterSignOutUrl="/" />
