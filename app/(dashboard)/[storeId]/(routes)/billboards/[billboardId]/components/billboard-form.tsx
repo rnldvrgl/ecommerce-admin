@@ -38,6 +38,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
     const origin = useOrigin();
 
     const [open, setOpen] = useState(false);
+
     const [loading, setLoading] = useState(false);
 
     const form = useForm<BillboardFormValues>({
