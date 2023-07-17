@@ -58,7 +58,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
             setLoading(true)
 
             if (initialData) {
-                await axios.patch(`/api/${params.storeId}/billboards/${params.billboardId}`);
+                await axios.patch(`/api/${params.storeId}/billboards/${params.billboardId}`, data);
             } else {
                 await axios.post(`/api/${params.storeId}/billboards`, data);
             }
