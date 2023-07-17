@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Store } from "@prisma/client"
+import { Billboard } from "@prisma/client"
 import { Trash } from "lucide-react";
 
 import { Heading } from "@/components/ui/heading";
@@ -19,15 +19,16 @@ import { AlertModal } from "@/components/modals/alert-modal";
 import { ApiAlert } from "@/components/ui/api-alert";
 import { useOrigin } from "@/hooks/use-origin";
 
-interface BillboardFormProps {
-    initialData: Store;
-}
-
 const formSchema = z.object({
-    name: z.string().min(1)
+    label: z.string().min(1),
+    imageUrl: z.string().min(1)
 });
 
 type BillboardFormValues = z.infer<typeof formSchema>;
+
+interface BillboardFormProps {
+    initialData: Billboard | null;
+}
 
 export const BillboardForm: React.FC<BillboardFormProps> = ({
     initialData
@@ -38,12 +39,19 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
     const origin = useOrigin();
 
     const [open, setOpen] = useState(false);
-
     const [loading, setLoading] = useState(false);
+
+    const title = initialData ? "Edit billboard" : "Create billboard";
+    const description = initialData ? "Edit a billboard" : "Add a new billboard";
+    const toastMessage = initialData ? "Billboard updated." : "Billboard created.";
+    const action = initialData ? "Save changes." : "Create";
 
     const form = useForm<BillboardFormValues>({
         resolver: zodResolver(formSchema),
-        defaultValues: initialData,
+        defaultValues: initialData || {
+            label: '',
+            imageUrl: '',
+        },
     });
 
 
