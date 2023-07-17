@@ -2,7 +2,8 @@
 
 import { Button } from "@/components/ui/button"
 import { Heading } from "@/components/ui/heading"
-import { Separator } from "@radix-ui/react-separator"
+import { Separator } from "@/components/ui/separator"
+Separator
 import { Plus } from "lucide-react"
 import { useParams, useRouter } from "next/navigation"
 
