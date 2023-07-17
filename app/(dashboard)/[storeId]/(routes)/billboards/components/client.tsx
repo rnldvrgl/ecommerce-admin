@@ -7,7 +7,7 @@ Separator
 import { Plus } from "lucide-react"
 import { useParams, useRouter } from "next/navigation"
 
-export const BillboardCLient = () => {
+export const BillboardClient = () => {
     const router = useRouter();
     const params = useParams();
 
