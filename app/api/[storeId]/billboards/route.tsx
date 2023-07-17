@@ -12,9 +12,9 @@ export async function POST(
 
 		const { label, imageUrl } = body;
 
-		// Unauthorized
+		// Unauthenticated
 		if (!userId) {
-			return new NextResponse("Unauthorized", { status: 401 });
+			return new NextResponse("Unauthenticated", { status: 401 });
 		}
 
 		// Bad Request
@@ -30,6 +30,18 @@ export async function POST(
 			return new NextResponse("Store ID is required", { status: 400 });
 		}
 
+		const storeByUserId = await prismadb.store.findFirst({
+			where: {
+				id: params.storeId,
+				userId
+			}
+		})
+
+		// Unauthorized
+		if (!storeByUserId) {
+			return new NextResponse("Unauthorized", { status: 403 })
+		}
+
 		const billboard = await prismadb.billboard.create({
 			data: {
 				label,
@@ -41,6 +53,31 @@ export async function POST(
 		return NextResponse.json(billboard);
 	} catch (error) {
 		console.log("[BILLBOARDS_POST]", error);
+
+		// Internal Server Error
+		return new NextResponse("Internal error", { status: 500 });
+	}
+}
+
+
+export async function GET(
+	req: Request,
+	{ params }: { params: { storeId: string } }
+) {
+	try {
+		if (!params.storeId) {
+			return new NextResponse("Store ID is required", { status: 400 });
+		}
+
+		const billboards = await prismadb.billboard.findMany({
+			where: {
+				storeId: params.storeId,
+			},
+		});
+
+		return NextResponse.json(billboards);
+	} catch (error) {
+		console.log("[BILLBOARDS_GET]", error);
 
 		// Internal Server Error
 		return new NextResponse("Internal error", { status: 500 });
