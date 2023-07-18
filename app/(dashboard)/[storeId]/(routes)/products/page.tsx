@@ -26,7 +26,8 @@ const ProductsPage = async ({
         id: item.id,
         name: item.name,
         isFeatured: item.isFeatured,
-        isArchived: item.isArchive,
+        isArchived: item.isArchived,
+        price: item.price,
         createdAt: format(item.createdAt, "MMMM do, yyyy")
     }))
 
