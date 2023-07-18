@@ -27,7 +27,7 @@ export async function PATCH(
         }
 
         if (!params.colorId) {
-            return new NextResponse("Size id is required", { status: 400 });
+            return new NextResponse("Color id is required", { status: 400 });
         }
 
         const storeByUserId = await prismadb.store.findFirst({
