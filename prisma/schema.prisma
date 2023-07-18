@@ -99,3 +99,9 @@ model Product {
   @@index([sizeId])
   @@index([colorId])
 }
+
+model Image {
+  id  String  @id @default(uuid())
+  productId String
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
