@@ -104,11 +104,12 @@ model Product {
 }
 
 model Image {
-  id  String  @id @default(uuid())
-  productId String
-  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
-  createdAt DateTime  @default(now())
-  updateAt  DateTime @updatedAt
+  id          String   @id @default(uuid())
+  productId   String   // Foreign Key to Product
+  product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  url         String   // URL of the image
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   @@index([productId])
 }
