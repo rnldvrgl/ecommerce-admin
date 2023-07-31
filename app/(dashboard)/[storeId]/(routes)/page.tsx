@@ -5,6 +5,11 @@ import prismadb from "@/lib/prismadb";
 import { formatter } from "@/lib/utils";
 import { CreditCard, DollarSign, Package } from "lucide-react";
 
+import { getTotalRevenue } from "@/actions/get-total-revenue";
+import { getSalesCount } from "@/actions/get-sales-count";
+import { getGraphRevenue } from "@/actions/get-graph-revenue";
+import { getStockCount } from "@/actions/get-stock-count";
+
 interface DashboardPageProps {
     params: {
         storeId: string
@@ -15,6 +20,9 @@ interface DashboardPageProps {
 const DashboardPage: React.FC<DashboardPageProps> = async ({
     params
 }) => {
+
+    const totalRevenue = await getTotalRevenue(params.storeId);
+
     return (
         <div className="flex-col">
             <div className="flex-1 p-8 pt-6 space-y-4">
