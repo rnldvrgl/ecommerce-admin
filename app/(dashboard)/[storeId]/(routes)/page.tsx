@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Overview } from "@/components/overview";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
 import prismadb from "@/lib/prismadb";
