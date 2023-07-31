@@ -38,7 +38,7 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({
                         </CardHeader>
                         <CardContent>
                             <div className="text-2xl font-bold">
-                                {formatter.format(100)}
+                                {formatter.format(totalRevenue)}
                             </div>
                         </CardContent>
                     </Card>
